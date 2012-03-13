@@ -5,8 +5,8 @@ package main.java.com.boa.dao;
 import java.util.List;
 import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.RoleTransactionLimit;
-import main.java.com.boa.domain.RoleTransactionLimitId;
+import main.java.com.boa.domain.RoleTransactionLimitBO;
+import main.java.com.boa.domain.RoleTransactionLimitIdBO;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -37,7 +37,7 @@ public class RoleTransactionLimitHome {
 		}
 	}
 
-	public void persist(RoleTransactionLimit transientInstance) {
+	public void persist(RoleTransactionLimitBO transientInstance) {
 		log.debug("persisting RoleTransactionLimit instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
@@ -48,7 +48,7 @@ public class RoleTransactionLimitHome {
 		}
 	}
 
-	public void attachDirty(RoleTransactionLimit instance) {
+	public void attachDirty(RoleTransactionLimitBO instance) {
 		log.debug("attaching dirty RoleTransactionLimit instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -59,7 +59,7 @@ public class RoleTransactionLimitHome {
 		}
 	}
 
-	public void attachClean(RoleTransactionLimit instance) {
+	public void attachClean(RoleTransactionLimitBO instance) {
 		log.debug("attaching clean RoleTransactionLimit instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
@@ -70,7 +70,7 @@ public class RoleTransactionLimitHome {
 		}
 	}
 
-	public void delete(RoleTransactionLimit persistentInstance) {
+	public void delete(RoleTransactionLimitBO persistentInstance) {
 		log.debug("deleting RoleTransactionLimit instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
@@ -81,10 +81,10 @@ public class RoleTransactionLimitHome {
 		}
 	}
 
-	public RoleTransactionLimit merge(RoleTransactionLimit detachedInstance) {
+	public RoleTransactionLimitBO merge(RoleTransactionLimitBO detachedInstance) {
 		log.debug("merging RoleTransactionLimit instance");
 		try {
-			RoleTransactionLimit result = (RoleTransactionLimit) sessionFactory
+			RoleTransactionLimitBO result = (RoleTransactionLimitBO) sessionFactory
 					.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -94,10 +94,10 @@ public class RoleTransactionLimitHome {
 		}
 	}
 
-	public RoleTransactionLimit findById(RoleTransactionLimitId id) {
+	public RoleTransactionLimitBO findById(RoleTransactionLimitIdBO id) {
 		log.debug("getting RoleTransactionLimit instance with id: " + id);
 		try {
-			RoleTransactionLimit instance = (RoleTransactionLimit) sessionFactory
+			RoleTransactionLimitBO instance = (RoleTransactionLimitBO) sessionFactory
 					.getCurrentSession().get("RoleTransactionLimit", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -111,7 +111,7 @@ public class RoleTransactionLimitHome {
 		}
 	}
 
-	public List findByExample(RoleTransactionLimit instance) {
+	public List findByExample(RoleTransactionLimitBO instance) {
 		log.debug("finding RoleTransactionLimit instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()

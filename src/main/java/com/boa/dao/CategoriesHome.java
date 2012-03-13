@@ -5,7 +5,7 @@ package main.java.com.boa.dao;
 import java.util.List;
 import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.Categories;
+import main.java.com.boa.domain.CategoriesBO;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,7 +35,7 @@ public class CategoriesHome {
 		}
 	}
 
-	public void persist(Categories transientInstance) {
+	public void persist(CategoriesBO transientInstance) {
 		log.debug("persisting Categories instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
@@ -46,7 +46,7 @@ public class CategoriesHome {
 		}
 	}
 
-	public void attachDirty(Categories instance) {
+	public void attachDirty(CategoriesBO instance) {
 		log.debug("attaching dirty Categories instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -57,7 +57,7 @@ public class CategoriesHome {
 		}
 	}
 
-	public void attachClean(Categories instance) {
+	public void attachClean(CategoriesBO instance) {
 		log.debug("attaching clean Categories instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
@@ -68,7 +68,7 @@ public class CategoriesHome {
 		}
 	}
 
-	public void delete(Categories persistentInstance) {
+	public void delete(CategoriesBO persistentInstance) {
 		log.debug("deleting Categories instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
@@ -79,10 +79,10 @@ public class CategoriesHome {
 		}
 	}
 
-	public Categories merge(Categories detachedInstance) {
+	public CategoriesBO merge(CategoriesBO detachedInstance) {
 		log.debug("merging Categories instance");
 		try {
-			Categories result = (Categories) sessionFactory.getCurrentSession()
+			CategoriesBO result = (CategoriesBO) sessionFactory.getCurrentSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,10 +92,10 @@ public class CategoriesHome {
 		}
 	}
 
-	public Categories findById(short id) {
+	public CategoriesBO findById(short id) {
 		log.debug("getting Categories instance with id: " + id);
 		try {
-			Categories instance = (Categories) sessionFactory
+			CategoriesBO instance = (CategoriesBO) sessionFactory
 					.getCurrentSession().get("Categories", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class CategoriesHome {
 		}
 	}
 
-	public List findByExample(Categories instance) {
+	public List findByExample(CategoriesBO instance) {
 		log.debug("finding Categories instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()

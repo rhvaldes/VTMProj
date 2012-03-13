@@ -3,7 +3,7 @@ package test.java;
 import static org.junit.Assert.*;
 
 import main.java.com.boa.dao.RolesHome;
-import main.java.com.boa.domain.Roles;
+import main.java.com.boa.domain.RolesBO;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -31,7 +31,7 @@ public class RolesHomeTest {
 
 	@Test
 	public void testPersist() {
-		Roles role  = new Roles();
+		RolesBO role  = new RolesBO();
 		role.setRoleName("foo");
 		role.setRoleDescription("foobar");
 		

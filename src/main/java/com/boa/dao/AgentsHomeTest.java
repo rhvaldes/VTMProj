@@ -2,7 +2,7 @@ package main.java.com.boa.dao;
 
 import static org.junit.Assert.*;
 
-import main.java.com.boa.domain.Agents;
+import main.java.com.boa.domain.AgentsBO;
 
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -33,7 +33,7 @@ public class AgentsHomeTest {
 
 	@Test
 	public void testPersist() {
-		Agents agent = new Agents("","Luis","BetancourtGay",null);
+		AgentsBO agent = new AgentsBO("","Luis","BetancourtGay",null);
 		agentsHome.persist(agent);		
 		assertNotNull(agentsHome.findByExample(agent));
 	}

@@ -5,7 +5,7 @@ package main.java.com.boa.dao;
 import java.util.List;
 import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.Limits;
+import main.java.com.boa.domain.LimitsBO;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,7 +35,7 @@ public class LimitsHome {
 		}
 	}
 
-	public void persist(Limits transientInstance) {
+	public void persist(LimitsBO transientInstance) {
 		log.debug("persisting Limits instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
@@ -46,7 +46,7 @@ public class LimitsHome {
 		}
 	}
 
-	public void attachDirty(Limits instance) {
+	public void attachDirty(LimitsBO instance) {
 		log.debug("attaching dirty Limits instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -57,7 +57,7 @@ public class LimitsHome {
 		}
 	}
 
-	public void attachClean(Limits instance) {
+	public void attachClean(LimitsBO instance) {
 		log.debug("attaching clean Limits instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
@@ -68,7 +68,7 @@ public class LimitsHome {
 		}
 	}
 
-	public void delete(Limits persistentInstance) {
+	public void delete(LimitsBO persistentInstance) {
 		log.debug("deleting Limits instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
@@ -79,10 +79,10 @@ public class LimitsHome {
 		}
 	}
 
-	public Limits merge(Limits detachedInstance) {
+	public LimitsBO merge(LimitsBO detachedInstance) {
 		log.debug("merging Limits instance");
 		try {
-			Limits result = (Limits) sessionFactory.getCurrentSession().merge(
+			LimitsBO result = (LimitsBO) sessionFactory.getCurrentSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,10 +92,10 @@ public class LimitsHome {
 		}
 	}
 
-	public Limits findById(short id) {
+	public LimitsBO findById(short id) {
 		log.debug("getting Limits instance with id: " + id);
 		try {
-			Limits instance = (Limits) sessionFactory.getCurrentSession().get(
+			LimitsBO instance = (LimitsBO) sessionFactory.getCurrentSession().get(
 					"Limits", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class LimitsHome {
 		}
 	}
 
-	public List findByExample(Limits instance) {
+	public List findByExample(LimitsBO instance) {
 		log.debug("finding Limits instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()

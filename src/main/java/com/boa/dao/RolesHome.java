@@ -5,7 +5,7 @@ package main.java.com.boa.dao;
 import java.util.List;
 import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.Roles;
+import main.java.com.boa.domain.RolesBO;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,7 +35,7 @@ public class RolesHome {
 		}
 	}
 
-	public void persist(Roles transientInstance) {
+	public void persist(RolesBO transientInstance) {
 		log.debug("persisting Roles instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
@@ -46,7 +46,7 @@ public class RolesHome {
 		}
 	}
 
-	public void attachDirty(Roles instance) {
+	public void attachDirty(RolesBO instance) {
 		log.debug("attaching dirty Roles instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -57,7 +57,7 @@ public class RolesHome {
 		}
 	}
 
-	public void attachClean(Roles instance) {
+	public void attachClean(RolesBO instance) {
 		log.debug("attaching clean Roles instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
@@ -68,7 +68,7 @@ public class RolesHome {
 		}
 	}
 
-	public void delete(Roles persistentInstance) {
+	public void delete(RolesBO persistentInstance) {
 		log.debug("deleting Roles instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
@@ -79,10 +79,10 @@ public class RolesHome {
 		}
 	}
 
-	public Roles merge(Roles detachedInstance) {
+	public RolesBO merge(RolesBO detachedInstance) {
 		log.debug("merging Roles instance");
 		try {
-			Roles result = (Roles) sessionFactory.getCurrentSession().merge(
+			RolesBO result = (RolesBO) sessionFactory.getCurrentSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,10 +92,10 @@ public class RolesHome {
 		}
 	}
 
-	public Roles findById(short id) {
+	public RolesBO findById(short id) {
 		log.debug("getting Roles instance with id: " + id);
 		try {
-			Roles instance = (Roles) sessionFactory.getCurrentSession().get(
+			RolesBO instance = (RolesBO) sessionFactory.getCurrentSession().get(
 					"Roles", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class RolesHome {
 		}
 	}
 
-	public List findByExample(Roles instance) {
+	public List findByExample(RolesBO instance) {
 		log.debug("finding Roles instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()

@@ -5,7 +5,7 @@ package main.java.com.boa.dao;
 import java.util.List;
 import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.Priorities;
+import main.java.com.boa.domain.PrioritiesBO;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,7 +35,7 @@ public class PrioritiesHome {
 		}
 	}
 
-	public void persist(Priorities transientInstance) {
+	public void persist(PrioritiesBO transientInstance) {
 		log.debug("persisting Priorities instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
@@ -46,7 +46,7 @@ public class PrioritiesHome {
 		}
 	}
 
-	public void attachDirty(Priorities instance) {
+	public void attachDirty(PrioritiesBO instance) {
 		log.debug("attaching dirty Priorities instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -57,7 +57,7 @@ public class PrioritiesHome {
 		}
 	}
 
-	public void attachClean(Priorities instance) {
+	public void attachClean(PrioritiesBO instance) {
 		log.debug("attaching clean Priorities instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
@@ -68,7 +68,7 @@ public class PrioritiesHome {
 		}
 	}
 
-	public void delete(Priorities persistentInstance) {
+	public void delete(PrioritiesBO persistentInstance) {
 		log.debug("deleting Priorities instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
@@ -79,10 +79,10 @@ public class PrioritiesHome {
 		}
 	}
 
-	public Priorities merge(Priorities detachedInstance) {
+	public PrioritiesBO merge(PrioritiesBO detachedInstance) {
 		log.debug("merging Priorities instance");
 		try {
-			Priorities result = (Priorities) sessionFactory.getCurrentSession()
+			PrioritiesBO result = (PrioritiesBO) sessionFactory.getCurrentSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,10 +92,10 @@ public class PrioritiesHome {
 		}
 	}
 
-	public Priorities findById(short id) {
+	public PrioritiesBO findById(short id) {
 		log.debug("getting Priorities instance with id: " + id);
 		try {
-			Priorities instance = (Priorities) sessionFactory
+			PrioritiesBO instance = (PrioritiesBO) sessionFactory
 					.getCurrentSession().get("Priorities", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class PrioritiesHome {
 		}
 	}
 
-	public List findByExample(Priorities instance) {
+	public List findByExample(PrioritiesBO instance) {
 		log.debug("finding Priorities instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()

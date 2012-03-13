@@ -5,7 +5,7 @@ package main.java.com.boa.dao;
 import java.util.List;
 import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.Codes;
+import main.java.com.boa.domain.CodesBO;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,7 +35,7 @@ public class CodesHome {
 		}
 	}
 
-	public void persist(Codes transientInstance) {
+	public void persist(CodesBO transientInstance) {
 		log.debug("persisting Codes instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
@@ -46,7 +46,7 @@ public class CodesHome {
 		}
 	}
 
-	public void attachDirty(Codes instance) {
+	public void attachDirty(CodesBO instance) {
 		log.debug("attaching dirty Codes instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -57,7 +57,7 @@ public class CodesHome {
 		}
 	}
 
-	public void attachClean(Codes instance) {
+	public void attachClean(CodesBO instance) {
 		log.debug("attaching clean Codes instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
@@ -68,7 +68,7 @@ public class CodesHome {
 		}
 	}
 
-	public void delete(Codes persistentInstance) {
+	public void delete(CodesBO persistentInstance) {
 		log.debug("deleting Codes instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
@@ -79,10 +79,10 @@ public class CodesHome {
 		}
 	}
 
-	public Codes merge(Codes detachedInstance) {
+	public CodesBO merge(CodesBO detachedInstance) {
 		log.debug("merging Codes instance");
 		try {
-			Codes result = (Codes) sessionFactory.getCurrentSession().merge(
+			CodesBO result = (CodesBO) sessionFactory.getCurrentSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,10 +92,10 @@ public class CodesHome {
 		}
 	}
 
-	public Codes findById(short id) {
+	public CodesBO findById(short id) {
 		log.debug("getting Codes instance with id: " + id);
 		try {
-			Codes instance = (Codes) sessionFactory.getCurrentSession().get(
+			CodesBO instance = (CodesBO) sessionFactory.getCurrentSession().get(
 					"Codes", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class CodesHome {
 		}
 	}
 
-	public List findByExample(Codes instance) {
+	public List findByExample(CodesBO instance) {
 		log.debug("finding Codes instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()

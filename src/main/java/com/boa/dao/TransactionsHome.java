@@ -5,7 +5,7 @@ package main.java.com.boa.dao;
 import java.util.List;
 import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.Transactions;
+import main.java.com.boa.domain.TransactionsBO;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,7 +35,7 @@ public class TransactionsHome {
 		}
 	}
 
-	public void persist(Transactions transientInstance) {
+	public void persist(TransactionsBO transientInstance) {
 		log.debug("persisting Transactions instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
@@ -46,7 +46,7 @@ public class TransactionsHome {
 		}
 	}
 
-	public void attachDirty(Transactions instance) {
+	public void attachDirty(TransactionsBO instance) {
 		log.debug("attaching dirty Transactions instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -57,7 +57,7 @@ public class TransactionsHome {
 		}
 	}
 
-	public void attachClean(Transactions instance) {
+	public void attachClean(TransactionsBO instance) {
 		log.debug("attaching clean Transactions instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
@@ -68,7 +68,7 @@ public class TransactionsHome {
 		}
 	}
 
-	public void delete(Transactions persistentInstance) {
+	public void delete(TransactionsBO persistentInstance) {
 		log.debug("deleting Transactions instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
@@ -79,10 +79,10 @@ public class TransactionsHome {
 		}
 	}
 
-	public Transactions merge(Transactions detachedInstance) {
+	public TransactionsBO merge(TransactionsBO detachedInstance) {
 		log.debug("merging Transactions instance");
 		try {
-			Transactions result = (Transactions) sessionFactory
+			TransactionsBO result = (TransactionsBO) sessionFactory
 					.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,10 +92,10 @@ public class TransactionsHome {
 		}
 	}
 
-	public Transactions findById(short id) {
+	public TransactionsBO findById(short id) {
 		log.debug("getting Transactions instance with id: " + id);
 		try {
-			Transactions instance = (Transactions) sessionFactory
+			TransactionsBO instance = (TransactionsBO) sessionFactory
 					.getCurrentSession().get("Transactions", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class TransactionsHome {
 		}
 	}
 
-	public List findByExample(Transactions instance) {
+	public List findByExample(TransactionsBO instance) {
 		log.debug("finding Transactions instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()

@@ -5,7 +5,7 @@ package main.java.com.boa.dao;
 import java.util.List;
 import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.Agents;
+import main.java.com.boa.domain.AgentsBO;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,7 +35,7 @@ public class AgentsHome {
 		}
 	}
 
-	public void persist(Agents transientInstance) {
+	public void persist(AgentsBO transientInstance) {
 		log.debug("persisting Agents instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
@@ -46,7 +46,7 @@ public class AgentsHome {
 		}
 	}
 
-	public void attachDirty(Agents instance) {
+	public void attachDirty(AgentsBO instance) {
 		log.debug("attaching dirty Agents instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -57,7 +57,7 @@ public class AgentsHome {
 		}
 	}
 
-	public void attachClean(Agents instance) {
+	public void attachClean(AgentsBO instance) {
 		log.debug("attaching clean Agents instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
@@ -68,7 +68,7 @@ public class AgentsHome {
 		}
 	}
 
-	public void delete(Agents persistentInstance) {
+	public void delete(AgentsBO persistentInstance) {
 		log.debug("deleting Agents instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
@@ -79,10 +79,10 @@ public class AgentsHome {
 		}
 	}
 
-	public Agents merge(Agents detachedInstance) {
+	public AgentsBO merge(AgentsBO detachedInstance) {
 		log.debug("merging Agents instance");
 		try {
-			Agents result = (Agents) sessionFactory.getCurrentSession().merge(
+			AgentsBO result = (AgentsBO) sessionFactory.getCurrentSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,10 +92,10 @@ public class AgentsHome {
 		}
 	}
 
-	public Agents findById(java.lang.String id) {
+	public AgentsBO findById(java.lang.String id) {
 		log.debug("getting Agents instance with id: " + id);
 		try {
-			Agents instance = (Agents) sessionFactory.getCurrentSession().get(
+			AgentsBO instance = (AgentsBO) sessionFactory.getCurrentSession().get(
 					"Agents", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class AgentsHome {
 		}
 	}
 
-	public List findByExample(Agents instance) {
+	public List findByExample(AgentsBO instance) {
 		log.debug("finding Agents instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()

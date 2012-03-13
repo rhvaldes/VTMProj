@@ -5,7 +5,7 @@ package main.java.com.boa.dao;
 import java.util.List;
 import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.ProgressIndicators;
+import main.java.com.boa.domain.ProgressIndicatorsBO;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,7 +36,7 @@ public class ProgressIndicatorsHome {
 		}
 	}
 
-	public void persist(ProgressIndicators transientInstance) {
+	public void persist(ProgressIndicatorsBO transientInstance) {
 		log.debug("persisting ProgressIndicators instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
@@ -47,7 +47,7 @@ public class ProgressIndicatorsHome {
 		}
 	}
 
-	public void attachDirty(ProgressIndicators instance) {
+	public void attachDirty(ProgressIndicatorsBO instance) {
 		log.debug("attaching dirty ProgressIndicators instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
@@ -58,7 +58,7 @@ public class ProgressIndicatorsHome {
 		}
 	}
 
-	public void attachClean(ProgressIndicators instance) {
+	public void attachClean(ProgressIndicatorsBO instance) {
 		log.debug("attaching clean ProgressIndicators instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
@@ -69,7 +69,7 @@ public class ProgressIndicatorsHome {
 		}
 	}
 
-	public void delete(ProgressIndicators persistentInstance) {
+	public void delete(ProgressIndicatorsBO persistentInstance) {
 		log.debug("deleting ProgressIndicators instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
@@ -80,10 +80,10 @@ public class ProgressIndicatorsHome {
 		}
 	}
 
-	public ProgressIndicators merge(ProgressIndicators detachedInstance) {
+	public ProgressIndicatorsBO merge(ProgressIndicatorsBO detachedInstance) {
 		log.debug("merging ProgressIndicators instance");
 		try {
-			ProgressIndicators result = (ProgressIndicators) sessionFactory
+			ProgressIndicatorsBO result = (ProgressIndicatorsBO) sessionFactory
 					.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -93,10 +93,10 @@ public class ProgressIndicatorsHome {
 		}
 	}
 
-	public ProgressIndicators findById(short id) {
+	public ProgressIndicatorsBO findById(short id) {
 		log.debug("getting ProgressIndicators instance with id: " + id);
 		try {
-			ProgressIndicators instance = (ProgressIndicators) sessionFactory
+			ProgressIndicatorsBO instance = (ProgressIndicatorsBO) sessionFactory
 					.getCurrentSession().get("ProgressIndicators", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -110,7 +110,7 @@ public class ProgressIndicatorsHome {
 		}
 	}
 
-	public List findByExample(ProgressIndicators instance) {
+	public List findByExample(ProgressIndicatorsBO instance) {
 		log.debug("finding ProgressIndicators instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()
