@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 11, 2012 3:33:34 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Categories" table="CATEGORIES">
+        <id name="categoryId" type="short">
+            <column name="CATEGORY_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="categoryName" type="string">
+            <column name="CATEGORY_NAME" length="65" not-null="true" />
+        </property>
+        <property name="categoryType" type="string">
+            <column name="CATEGORY_TYPE" length="65" not-null="true" />
+        </property>
+        <property name="categoryDescription" type="string">
+            <column name="CATEGORY_DESCRIPTION" length="65" />
+        </property>
+        <property name="isSystem" type="java.lang.Character">
+            <column name="IS_SYSTEM" length="1" />
+        </property>
+        <property name="comments" type="string">
+            <column name="COMMENTS" length="65" />
+        </property>
+        <set name="codeses" table="CODE_CATEGORY" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODE_CATEGORY_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="Codes">
+                <column name="CODE_ID" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

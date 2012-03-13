@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 11, 2012 3:33:34 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Roles" table="ROLES">
+        <id name="roleId" type="short">
+            <column name="ROLE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="roleName" type="string">
+            <column name="ROLE_NAME" length="65" />
+        </property>
+        <property name="roleDescription" type="string">
+            <column name="ROLE_DESCRIPTION" length="65" />
+        </property>
+        <set name="roleTransactionLimits" table="ROLE_TRANSACTION_LIMIT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ROLE_ID" not-null="true" />
+            </key>
+            <one-to-many class="RoleTransactionLimit" />
+        </set>
+        <set name="agentses" table="AGENT_ROLE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ROLE_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="Agents">
+                <column name="AGENT_ID" length="10" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

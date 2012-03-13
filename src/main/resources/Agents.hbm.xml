@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 11, 2012 3:33:34 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Agents" table="AGENTS">
+        <id name="agentId" type="string">
+            <column name="AGENT_ID" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="agentFirstName" type="string">
+            <column name="AGENT_FIRST_NAME" length="65" />
+        </property>
+        <property name="agentLastName" type="string">
+            <column name="AGENT_LAST_NAME" length="65" />
+        </property>
+        <set name="roleses" table="AGENT_ROLE" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="AGENT_ID" length="10" not-null="true" />
+            </key>
+            <many-to-many entity-name="Roles">
+                <column name="ROLE_ID" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
