@@ -1,41 +1,41 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Mar 11, 2012 3:33:34 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="Codes" table="CODES">
-        <id name="codeId" type="short">
-            <column name="CODE_ID" />
-            <generator class="assigned" />
-        </id>
-        <property name="codeText" type="string">
-            <column name="CODE_TEXT" length="65" />
-        </property>
-        <property name="codeName" type="string">
-            <column name="CODE_NAME" length="65" />
-        </property>
-        <property name="isDefault" type="char">
-            <column name="IS_DEFAULT" length="1" not-null="true" />
-        </property>
-        <property name="codeSequence" type="java.lang.Integer">
-            <column name="CODE_SEQUENCE" />
-        </property>
-        <property name="effectiveDate" type="timestamp">
-            <column name="EFFECTIVE_DATE" length="26" />
-        </property>
-        <property name="versionBegin" type="java.lang.Integer">
-            <column name="VERSION_BEGIN" />
-        </property>
-        <property name="versionEnd" type="java.lang.Integer">
-            <column name="VERSION_END" />
-        </property>
-        <set name="categorieses" table="CODE_CATEGORY" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="CODE_ID" not-null="true" />
-            </key>
-            <many-to-many entity-name="Categories">
-                <column name="CODE_CATEGORY_ID" not-null="true" />
-            </many-to-many>
-        </set>
-    </class>
+ <class name="main.java.com.boa.domain.CodesBO" table="CODES">
+  <id name="codeId" type="short">
+   <column name="CODE_ID"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="codeText" type="string">
+   <column length="65" name="CODE_TEXT"/>
+  </property>
+  <property generated="never" lazy="false" name="codeName" type="string">
+   <column length="65" name="CODE_NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="isDefault" type="char">
+   <column length="1" name="IS_DEFAULT" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="codeSequence" type="java.lang.Integer">
+   <column name="CODE_SEQUENCE"/>
+  </property>
+  <property generated="never" lazy="false" name="effectiveDate" type="timestamp">
+   <column length="26" name="EFFECTIVE_DATE"/>
+  </property>
+  <property generated="never" lazy="false" name="versionBegin" type="java.lang.Integer">
+   <column name="VERSION_BEGIN"/>
+  </property>
+  <property generated="never" lazy="false" name="versionEnd" type="java.lang.Integer">
+   <column name="VERSION_END"/>
+  </property>
+  <set fetch="select" lazy="true" name="categorieses" sort="unsorted" table="CODE_CATEGORY">
+   <key>
+    <column name="CODE_ID" not-null="true"/>
+   </key>
+   <many-to-many entity-name="Categories" unique="false">
+    <column name="CODE_CATEGORY_ID" not-null="true"/>
+   </many-to-many>
+  </set>
+ </class>
 </hibernate-mapping>

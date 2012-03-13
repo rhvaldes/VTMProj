@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>lib-.cp</name>
+			<type>2</type>
+			<location>C:/Program Files/IBM/SDP/configuration/org.eclipse.osgi/bundles/1968/1/.cp</location>
+		</link>
+	</linkedResources>
 </projectDescription>

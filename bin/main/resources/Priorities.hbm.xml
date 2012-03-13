@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Mar 11, 2012 3:33:34 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="Priorities" table="PRIORITIES">
-        <comment>VTA Priorities for Transactions</comment>
-        <id name="priorityId" type="short">
-            <column name="PRIORITY_ID" />
-            <generator class="assigned" />
-        </id>
-        <property name="priorityName" type="string">
-            <column name="PRIORITY_NAME" length="65">
-                <comment>Priority Name</comment>
-            </column>
-        </property>
-        <property name="priorityDescription" type="string">
-            <column name="PRIORITY_DESCRIPTION" length="65" />
-        </property>
-        <set name="transactionses" table="TRANSACTION_PRIORITY" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="PRIORITY_ID" not-null="true" />
-            </key>
-            <many-to-many entity-name="Transactions">
-                <column name="TRANSACTION_ID" not-null="true" />
-            </many-to-many>
-        </set>
-    </class>
+ <class name="main.java.com.boa.domain.PrioritiesBO" table="PRIORITIES">
+  <comment>VTA Priorities for Transactions</comment>
+  <id name="priorityId" type="short">
+   <column name="PRIORITY_ID"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="priorityName" type="string">
+   <column length="65" name="PRIORITY_NAME">
+    <comment>Priority Name</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="priorityDescription" type="string">
+   <column length="65" name="PRIORITY_DESCRIPTION"/>
+  </property>
+  <set fetch="select" lazy="true" name="transactionses" sort="unsorted" table="TRANSACTION_PRIORITY">
+   <key>
+    <column name="PRIORITY_ID" not-null="true"/>
+   </key>
+   <many-to-many entity-name="Transactions" unique="false">
+    <column name="TRANSACTION_ID" not-null="true"/>
+   </many-to-many>
+  </set>
+ </class>
 </hibernate-mapping>

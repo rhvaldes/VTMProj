@@ -1,24 +1,25 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Mar 11, 2012 3:33:34 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="Limits" table="LIMITS">
-        <id name="limitId" type="short">
-            <column name="LIMIT_ID" />
-            <generator class="assigned" />
-        </id>
-        <property name="limitName" type="string">
-            <column name="LIMIT_NAME" length="65" />
-        </property>
-        <property name="limitDescription" type="string">
-            <column name="LIMIT_DESCRIPTION" length="65" />
-        </property>
-        <set name="roleTransactionLimits" table="ROLE_TRANSACTION_LIMIT" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="LIMIT_ID" not-null="true" />
-            </key>
-            <one-to-many class="RoleTransactionLimit" />
-        </set>
-    </class>
+ <class name="main.java.com.boa.domain.LimitsBO" table="LIMITS">
+  <id name="limitId" type="short">
+   <column name="LIMIT_ID"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="limitName" type="string">
+   <column length="65" name="LIMIT_NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="limitDescription" type="string">
+   <column length="65" name="LIMIT_DESCRIPTION"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true"
+   name="roleTransactionLimits" sort="unsorted" table="ROLE_TRANSACTION_LIMIT">
+   <key>
+    <column name="LIMIT_ID" not-null="true"/>
+   </key>
+   <one-to-many class="RoleTransactionLimit"/>
+  </set>
+ </class>
 </hibernate-mapping>

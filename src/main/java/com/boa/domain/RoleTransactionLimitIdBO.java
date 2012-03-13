@@ -7,6 +7,10 @@ package main.java.com.boa.domain;
  */
 public class RoleTransactionLimitIdBO implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4599776638417304732L;
 	private int roleId;
 	private int limitId;
 	private int transactionId;

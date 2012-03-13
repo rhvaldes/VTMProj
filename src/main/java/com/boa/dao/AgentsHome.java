@@ -3,15 +3,16 @@ package main.java.com.boa.dao;
 // Generated Mar 9, 2012 2:46:44 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.List;
-import javax.naming.InitialContext;
 
-import main.java.com.boa.domain.AgentsBO;
+import javax.naming.InitialContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
+
+import main.java.com.boa.domain.AgentsBO;
 
 /**
  * Home object for domain model class Agents.
